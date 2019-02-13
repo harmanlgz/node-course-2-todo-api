@@ -13,7 +13,7 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (error, db) => {
     // });
 
     //deleteOne
-    // db.collection('Todos').deleteOne({text: "eat lunch"}).then((result) => {
+    // db.collection('Todos').deleteOne({text: "eat dessert"}).then((result) => {
     //     console.log(result);
     // });
 
@@ -22,13 +22,13 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (error, db) => {
     //     console.log(result);
     // });
 
-    // db.collection('Users').deleteMany({name: "Harman"}).then((result) => {
-    //     console.log(result);
-    // });
+    db.collection('Users').deleteMany({name: "Harman"}).then((result) => {
+        console.log(result);
+    });
     
-    // db.collection('Users').findOneAndDelete({_id: new ObjectID('5c3dbd3e3370202ff77238c8')}).then((result) => {
-    //     console.log(result);
-    // });
+    db.collection('Users').findOneAndDelete({_id: new ObjectID('5c63d64b6ed3ae536b965d8b')}).then((result) => {
+        console.log(JSON.stringify(result, undefined, 2));
+    });
 
     // db.close();
 });
