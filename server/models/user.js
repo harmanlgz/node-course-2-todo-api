@@ -40,7 +40,7 @@ UserSchema.methods.toJSON = function (){
     return _.pick(userObject, ['email', '_id']);
 };
 
-UserSchema.methods.generateAuthToken = function () { // instance methods are defined with methods
+UserSchema.methods.generateAuthToken = function () { // instance methods are defined on methods
     var user = this;
     var access = 'auth';
     var token = jwt.sign({_id: user._id.toHexString(), access}, 'abc123').toString();
@@ -52,7 +52,7 @@ UserSchema.methods.generateAuthToken = function () { // instance methods are def
     });
 };
 
-UserSchema.statics.findByToken = function (token) { // model methods are defined with statics
+UserSchema.statics.findByToken = function (token) { // model methods are defined on statics
     var User = this;
     var decoded;
     try{
