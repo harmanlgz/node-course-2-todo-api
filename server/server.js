@@ -146,16 +146,14 @@ app.post('/users/login', (req, res) => {
     }).catch((e) => {
         res.status(400).send();
     });
+});
 
-    // User.findOne({'email': body.email}).then((user) => {
-    //     bcrypt.compare(body.password, user.password, (err, res) => {
-    //         if(res){
-    //             res.send(body);
-    //         }else{
-    //             res.status(400).send();
-    //         }
-    //     });
-    // }).catch((e) => res.status(400).send());
+app.delete('/users/me/token', authenticate, (req, res) => {
+    req.user.removeToken(req.token).then(() => {
+        res.status(200).send();
+    }, () => {
+        res.status(400).send();
+    });
 });
 
 app.listen(port, () => {
